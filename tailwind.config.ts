@@ -10,6 +10,9 @@ const config: Config = {
 
   theme: {
   	extend: {
+			backgroundImage: {
+				'holographic': "url('/assets/hhholographic.webp')"
+			},
 			dropShadow: {
 				default: '0 10px 25px #06c8a1'
 			},

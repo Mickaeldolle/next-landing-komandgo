@@ -1,0 +1,26 @@
+<svg id="visual" viewBox="0 0 900 200" width="900" height="200" xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+  <g>
+    <g transform="translate(570 61)">
+      <path d="M0 -58L50.2 -29L50.2 29L0 58L-50.2 29L-50.2 -29Z" fill="none" stroke="#06c8a1" stroke-width="5"></path>
+    </g>
+    <g transform="translate(177 81)">
+      <path d="M0 -44L38.1 -22L38.1 22L0 44L-38.1 22L-38.1 -22Z" stroke="#06c8a1" fill="none" stroke-width="5"></path>
+    </g>
+    <g transform="translate(818 112)">
+      <path d="M0 -35L30.3 -17.5L30.3 17.5L0 35L-30.3 17.5L-30.3 -17.5Z" stroke="#06c8a1" fill="none" stroke-width="5">
+      </path>
+    </g>
+    <g transform="translate(431 61)">
+      <path d="M0 -45L39 -22.5L39 22.5L0 45L-39 22.5L-39 -22.5Z" stroke="#06c8a1" fill="none" stroke-width="5"></path>
+    </g>
+    <g transform="translate(294 130)">
+      <path d="M0 -29L25.1 -14.5L25.1 14.5L0 29L-25.1 14.5L-25.1 -14.5Z" stroke="#06c8a1" fill="none" stroke-width="5">
+      </path>
+    </g>
+    <g transform="translate(75 138)">
+      <path d="M0 -47L40.7 -23.5L40.7 23.5L0 47L-40.7 23.5L-40.7 -23.5Z" stroke="#06c8a1" fill="none" stroke-width="5">
+      </path>
+    </g>
+  </g>
+</svg>
