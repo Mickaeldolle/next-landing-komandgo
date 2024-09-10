@@ -4,7 +4,7 @@ import phoneImage from "../assets/imagehero.png";
 
 export default function Hero() {
   return (
-    <div className="md:flex md:m-auto md:justify-evenly">
+    <div className="md:flex md:m-auto md:justify-evenly px-3">
       <div className="max-w-screen-md md:flex md:flex-col md:justify-center">
         <div className="text-container">
           <h1 className="text-4xl uppercase mb-5 tracking-widest leading-9 text-center md:text-end md:text-7xl text-gray-300">
