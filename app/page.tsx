@@ -6,11 +6,15 @@ import Features from "@/components/Features";
 import Benefits from "@/components/Benefits";
 import ThreeTest from "@/components/ThreeTest";
 import Footer from "@/components/Footer";
+import Contact from "@/components/Contact";
+// import { Test } from "@/components/Test";
+// import { HeroHighlight } from "@/components/ui/hero-highlight";
+import { Vortex } from "@/components/ui/vortex";
 
 export default function Home() {
   return (
     <>
-      <header className="header md:h-screen">
+      <header className="max-w-screen relative h-screen overflow-hidden">
         <Image
           src={logo}
           alt="logo de komandgo"
@@ -19,11 +23,12 @@ export default function Home() {
         />
         <section className="">
           <Hero />
+          <Vortex />
         </section>
       </header>
-      <section>
-        <Features />
-      </section>
+      {/* <section> */}
+      <Features />
+      {/* </section> */}
       <section className="relative">
         <div className="absolute -z-10 w-full">
           <svg
@@ -349,6 +354,7 @@ export default function Home() {
       </section> */}
       <section className="contact relative">
         <ThreeTest />
+        <Contact />
       </section>
       <section>
         <Footer />
