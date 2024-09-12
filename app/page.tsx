@@ -4,6 +4,8 @@ import Hero from "@/components/Hero";
 import Presentation from "@/components/Presentation";
 import Features from "@/components/Features";
 import Benefits from "@/components/Benefits";
+import ThreeTest from "@/components/ThreeTest";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -339,6 +341,17 @@ export default function Home() {
       </section>
       <section className="">
         <Presentation />
+      </section>{" "}
+      {/* <section className="activities ">
+        <div className="bg-gradient-to-b from-white to-transparent h-90">
+          <Activities />
+        </div>
+      </section> */}
+      <section className="contact relative">
+        <ThreeTest />
+      </section>
+      <section>
+        <Footer />
       </section>
     </>
   );

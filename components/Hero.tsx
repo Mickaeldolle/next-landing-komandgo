@@ -1,6 +1,6 @@
-import { Button } from "./ui/button";
 import Image from "next/image";
 import phoneImage from "../assets/imagehero.png";
+import { Cta } from "./ui/cta";
 
 export default function Hero() {
   return (
@@ -19,18 +19,19 @@ export default function Hero() {
           </p>
         </div>
         <div className="text-center md:text-end">
-          <Button
+          <Cta
             variant={"cta"}
             size={"lg"}
             className="uppercase font-bold mb-10 md:text-xl md:p-7"
           >
             Tester gratuitement
-          </Button>
+          </Cta>
         </div>
       </div>
       <div className="max-h-80 overflow-hidden relative md:max-h-none md:static md:overflow-visible">
         <Image
           width={300}
+          priority
           className="mx-auto md:mx-10"
           src={phoneImage}
           alt="exemple de l'application"

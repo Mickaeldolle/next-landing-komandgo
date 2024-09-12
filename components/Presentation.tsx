@@ -14,7 +14,7 @@ export default function Presentation() {
         <span className="uppercase">c&apos;est quoi ?</span>
       </h2>
       <div className="md:flex md:justify-evenly">
-        <div className="md:w-2/6">
+        <div className="md:w-2/6 text-gray-600">
           <p className="mb-4 text-justify text-lg  md:text-xl">
             Une interface intuitive vous permettant de mettre en ligne
             facilement et gratuitement vos produits.
@@ -26,15 +26,15 @@ export default function Presentation() {
             Définissez vos modes de commandes
           </p>
           <div className="mb-8 text-justify text-lg md:text-xl flex justify-between">
-            <p className="border p-3 bg-[#272f51] rounded-xl text-white w-2/6 md:w-3/12 text-center">
+            <p className="border p-3 rounded-xl w-32 text-center">
               Emporter
               <ShoppingBag className="mx-auto my-2 w-8 h-8 md:w-12 md:h-12" />
             </p>
-            <p className="border p-3 bg-[#272f51] rounded-xl text-white w-2/6 md:w-3/12 text-center">
+            <p className="border p-3 rounded-xl w-32 text-center">
               Livraison
               <Truck className="mx-auto my-2 w-8 h-8 md:w-12 md:h-12" />
             </p>
-            <p className="border p-3 bg-[#272f51] rounded-xl text-white w-2/6 md:w-3/12 text-center">
+            <p className="border p-3 rounded-xl w-32 text-center">
               A table
               <UtensilsCrossed className="mx-auto my-2 w-8 h-8 md:w-12 md:h-12" />
             </p>
@@ -64,7 +64,7 @@ export default function Presentation() {
           </figcaption>
         </figure>
         <div className="md:w-2/6">
-          <p className="mb-8 text-justify  text-lg md:text-xl">
+          <p className="mb-8 text-justify text-lg md:text-xl">
             Une web app pour vos clients, optimisée sur mobile, accessible via
             un lien ou un QR code à partager sur vos réseaux sociaux.
           </p>

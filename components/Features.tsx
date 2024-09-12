@@ -33,7 +33,7 @@ export default function Features() {
             strokeWidth={0.8}
             className="mx-auto border rounded-xl shadow-2xl mb-5 w-24 h-24 md:w-36 md:h-36"
           />
-          Mis a jour du menu en un click
+          Mis à jour du menu en un click
         </li>
         <li className="text-center text-sm font-medium p-2 w-2/5 flex flex-col justify-evenly md:text-xl">
           {" "}
