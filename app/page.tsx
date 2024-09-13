@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Image from "next/image";
 import logo from "../assets/logowhite.png";
 import Hero from "@/components/Hero";
@@ -26,9 +27,9 @@ export default function Home() {
           <Vortex />
         </section>
       </header>
-      {/* <section> */}
-      <Features />
-      {/* </section> */}
+      <section>
+        <Features />
+      </section>
       <section className="relative">
         <div className="absolute -z-10 w-full">
           <svg
@@ -52,13 +53,13 @@ export default function Home() {
               >
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#06c8a1"
-                  stop-opacity="1"
+                  stopColor="#06c8a1"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#06c8a1"
-                  stop-opacity="1"
+                  stopColor="#06c8a1"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -72,13 +73,13 @@ export default function Home() {
               >
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#06c8a1"
-                  stop-opacity="1"
+                  stopColor="#06c8a1"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#57d2b0"
-                  stop-opacity="1"
+                  stopColor="#57d2b0"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -92,13 +93,13 @@ export default function Home() {
               >
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#80dbbf"
-                  stop-opacity="1"
+                  stopColor="#80dbbf"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#57d2b0"
-                  stop-opacity="1"
+                  stopColor="#57d2b0"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -112,13 +113,13 @@ export default function Home() {
               >
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#80dbbf"
-                  stop-opacity="1"
+                  stopColor="#80dbbf"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#a2e5cf"
-                  stop-opacity="1"
+                  stopColor="#a2e5cf"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -132,13 +133,13 @@ export default function Home() {
               >
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#c2eedf"
-                  stop-opacity="1"
+                  stopColor="#c2eedf"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#a2e5cf"
-                  stop-opacity="1"
+                  stopColor="#a2e5cf"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -152,13 +153,13 @@ export default function Home() {
               >
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#c2eedf"
-                  stop-opacity="1"
+                  stopColor="#c2eedf"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#e1f7ef"
-                  stop-opacity="1"
+                  stopColor="#e1f7ef"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -172,13 +173,13 @@ export default function Home() {
               >
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#ffffff"
-                  stop-opacity="1"
+                  stopColor="#ffffff"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#e1f7ef"
-                  stop-opacity="1"
+                  stopColor="#e1f7ef"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -186,13 +187,13 @@ export default function Home() {
               <linearGradient id="grad2_0" x1="0%" y1="0%" x2="56.3%" y2="100%">
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#06c8a1"
-                  stop-opacity="1"
+                  stopColor="#06c8a1"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#06c8a1"
-                  stop-opacity="1"
+                  stopColor="#06c8a1"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -200,13 +201,13 @@ export default function Home() {
               <linearGradient id="grad2_1" x1="0%" y1="0%" x2="56.3%" y2="100%">
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#57d2b0"
-                  stop-opacity="1"
+                  stopColor="#57d2b0"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#06c8a1"
-                  stop-opacity="1"
+                  stopColor="#06c8a1"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -214,13 +215,13 @@ export default function Home() {
               <linearGradient id="grad2_2" x1="0%" y1="0%" x2="56.3%" y2="100%">
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#57d2b0"
-                  stop-opacity="1"
+                  stopColor="#57d2b0"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#80dbbf"
-                  stop-opacity="1"
+                  stopColor="#80dbbf"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -228,13 +229,13 @@ export default function Home() {
               <linearGradient id="grad2_3" x1="0%" y1="0%" x2="56.3%" y2="100%">
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#a2e5cf"
-                  stop-opacity="1"
+                  stopColor="#a2e5cf"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#80dbbf"
-                  stop-opacity="1"
+                  stopColor="#80dbbf"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -242,13 +243,13 @@ export default function Home() {
               <linearGradient id="grad2_4" x1="0%" y1="0%" x2="56.3%" y2="100%">
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#a2e5cf"
-                  stop-opacity="1"
+                  stopColor="#a2e5cf"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#c2eedf"
-                  stop-opacity="1"
+                  stopColor="#c2eedf"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -256,13 +257,13 @@ export default function Home() {
               <linearGradient id="grad2_5" x1="0%" y1="0%" x2="56.3%" y2="100%">
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#e1f7ef"
-                  stop-opacity="1"
+                  stopColor="#e1f7ef"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#c2eedf"
-                  stop-opacity="1"
+                  stopColor="#c2eedf"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>
@@ -270,13 +271,13 @@ export default function Home() {
               <linearGradient id="grad2_6" x1="0%" y1="0%" x2="56.3%" y2="100%">
                 <stop
                   offset="14.444444444444446%"
-                  stop-color="#e1f7ef"
-                  stop-opacity="1"
+                  stopColor="#e1f7ef"
+                  stopOpacity="1"
                 ></stop>
                 <stop
                   offset="85.55555555555554%"
-                  stop-color="#ffffff"
-                  stop-opacity="1"
+                  stopColor="#ffffff"
+                  stopOpacity="1"
                 ></stop>
               </linearGradient>
             </defs>

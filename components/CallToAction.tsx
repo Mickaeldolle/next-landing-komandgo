@@ -22,7 +22,7 @@ export default function CallToAction() {
           Tester gratuitement
         </Cta>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-white">
+      <DialogContent className="max-w-[90%] md:w-auto bg-white rounded-md">
         <DialogHeader>
           <DialogTitle>Connexion</DialogTitle>
           <DialogDescription>
