@@ -2,6 +2,7 @@ import Image from "next/image";
 import phoneImage from "../assets/imagehero.png";
 import CallToAction from "./CallToAction";
 import AuthProvider from "./AuthProvider";
+// import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -19,6 +20,10 @@ export default function Hero() {
             vos clients 🚀
           </p>
         </div>
+        {/* //! à supprimé, juste pour redirigé l'utilisateur pour le remercier après la connexion ! */}
+        {/* <div className="border text-white">
+          <Link href="/thank">Ici</Link>
+        </div> */}
         <div className="text-center md:text-end">
           <AuthProvider>
             <CallToAction />

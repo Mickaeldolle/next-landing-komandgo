@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import NextAuth, { NextAuthOptions, Session } from "next-auth";
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from '@prisma/client';
