@@ -24,6 +24,7 @@ const authOptions: NextAuthOptions = {
         where: { email: profile.email },
         create: {
           email: profile.email,
+          lastname: profile.name,
         },
         update: { email: profile.email },
       });
