@@ -1,0 +1,19 @@
+# Bloquer l'accès aux moteurs de recherche pour certaines pages sensibles
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /cart/
+Disallow: /checkout/
+
+# Bloquer les répertoires d'API ou de données privées
+Disallow: /api/
+
+# Empêcher l'accès à toute URL contenant des paramètres de requête
+Disallow: /*?*
+
+# Autoriser l'exploration du reste du site
+Allow: /
+
+# Indiquer le chemin du fichier sitemap
+# Sitemap: https://www.tondomaine.com/sitemap.xml
