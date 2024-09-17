@@ -28,7 +28,7 @@ model category {
   created_at    DateTime   @default(now()) @db.Timestamptz(6)
   position      Int?
   active        Boolean    @default(true)
-  updated_at    DateTime?  @db.Timestamptz(6)
+  updated_at    DateTime?  @updatedAt
   restaurant    restaurant @relation(fields: [restaurant_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
   food          food[]
 
@@ -44,7 +44,7 @@ model food {
   category_id                             Int?
   active                                  Boolean         @default(true)
   created_at                              DateTime        @default(now()) @db.Timestamptz(6)
-  updated_at                              DateTime?       @db.Timestamptz(6)
+  updated_at                              DateTime?       @updatedAt
   menu_price                              Int?
   additional_price                        Int?
   need_majority                           Boolean         @default(false)
@@ -82,7 +82,7 @@ model order {
   status               Boolean?
   delivered            Boolean?     @default(false)
   created_at           DateTime     @default(now()) @db.Timestamptz(6)
-  updated_at           DateTime?    @db.Timestamptz(6)
+  updated_at           DateTime?    @updatedAt
   approuved            Boolean?
   ready_time           String       @db.VarChar(5)
   comment              String?      @db.VarChar(500)
@@ -114,7 +114,7 @@ model process {
   label                                        String       @db.VarChar(50)
   restaurant_id                                String       @db.Uuid
   created_at                                   DateTime     @default(now()) @db.Timestamptz(6)
-  updated_at                                   DateTime?    @db.Timestamptz(6)
+  updated_at                                   DateTime?    @updatedAt
   food_food_alone_process_idToprocess          food[]       @relation("food_alone_process_idToprocess")
   food_food_menu_process_idToprocess           food[]       @relation("food_menu_process_idToprocess")
   restaurant_process_restaurant_idTorestaurant restaurant   @relation("process_restaurant_idTorestaurant", fields: [restaurant_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "process_resaurantId_fkey")
@@ -137,7 +137,7 @@ model restaurant {
   logo_url                                  String?    @db.VarChar(500)
   banner_url                                String?    @db.VarChar(500)
   created_at                                DateTime   @default(now()) @db.Timestamptz(6)
-  updated_at                                DateTime?  @db.Timestamptz(6)
+  updated_at                                DateTime?  @updatedAt
   snapchat_link                             String?    @db.VarChar(250)
   instagram_link                            String?    @db.VarChar(250)
   is_open                                   Boolean    @default(false)
@@ -190,7 +190,7 @@ model subscription {
   created_at         DateTime  @default(now()) @db.Timestamptz(6)
   stripe_customer_id String?   @db.VarChar
   user_id            Int
-  updated_at         DateTime? @db.Timestamptz(6)
+  updated_at         DateTime? @updatedAt
   user               user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subscription_user_id_fk")
 
   @@index([user_id], map: "fki_subscription_user_id_fk")
@@ -203,7 +203,7 @@ model subscription_push {
   auth             String    @db.VarChar(250)
   content_encoding String?   @db.VarChar(250)
   created_at       DateTime  @default(now()) @db.Timestamptz(6)
-  updated_at       DateTime? @db.Timestamptz(6)
+  updated_at       DateTime? @updatedAt
   user_id          Int
   user             user      @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "subscription_push_userId_fkey")
 
@@ -223,7 +223,7 @@ model user {
   accept_terms      Boolean             @default(true)
   manual_active     Boolean             @default(false)
   created_at        DateTime            @default(now()) @db.Timestamptz(6)
-  updated_at        DateTime?           @db.Timestamptz(6)
+  updated_at        DateTime?           @updatedAt
   address           address[]
   message           message[]
   order             order[]
