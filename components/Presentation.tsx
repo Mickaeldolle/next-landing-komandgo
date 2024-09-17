@@ -25,7 +25,7 @@ export default function Presentation() {
           <p className="mb-4 text-center text-lg md:text-xl text-gray-400">
             Définissez vos modes de commandes
           </p>
-          <div className="mb-8 text-justify text-lg md:text-xl flex justify-between">
+          <div className="mb-8 text-justify text-lg md:text-xl flex justify-between gap-x-2">
             <p className="border p-3 rounded-xl w-32 text-center">
               Emporter
               <ShoppingBag className="mx-auto my-2 w-8 h-8 md:w-12 md:h-12" />

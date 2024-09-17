@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";

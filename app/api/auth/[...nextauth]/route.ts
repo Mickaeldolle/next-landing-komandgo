@@ -1,20 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import NextAuth, { NextAuthOptions, Session } from "next-auth";
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from '@prisma/client';
+import { NextRequest, NextResponse } from "next/server";
 const prisma = new PrismaClient();
 
 const authOptions: NextAuthOptions = {
-  session : {
+  session: {
     strategy: 'jwt',
   },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      
     }),
   ],
   callbacks: {
@@ -23,17 +21,26 @@ const authOptions: NextAuthOptions = {
         throw new Error("No email returned from Google");
       }
       await prisma.user.upsert({
-        where :{ email: profile.email },
+        where: { email: profile.email },
         create: {
           email: profile.email,
-          name: profile.name,
+          lastname: profile.name,
         },
         update: { email: profile.email },
       });
-
-      return true; 
-    }
-  },  
+      return true;
+    },
+    async redirect({ url, baseUrl }) {
+      // Redirige l'utilisateur vers une page spécifique après connexion réussie
+      // Ici, on redirige vers "/dashboard" par exemple
+      if (url.startsWith(baseUrl)) {
+        return `${baseUrl}/welcome`; // Redirection vers la page souhaitée
+      } else if (url.startsWith('/')) {
+        return `${baseUrl}${url}`; // Redirige vers une page relative
+      }
+      return baseUrl; // Redirige par défaut vers l'URL de base
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);

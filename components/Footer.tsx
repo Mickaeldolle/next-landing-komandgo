@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="min-h-screen md:min-h-0 flex justify-center items-center mt-5">
+    <footer className="min-h-screen md:min-h-0 flex justify-center items-center mt-5 border-t md:pt-5">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:flex-row-reverse md: justify-evenly items-center">
           {/* Logo */}
@@ -34,7 +34,7 @@ const Footer = () => {
                 />
                 <Button
                   variant="default"
-                  className="flex items-center mx-auto gap-2"
+                  className="flex items-center mx-auto gap-2 bg-[#272f51] text-white"
                 >
                   <Mail size={18} />
                   S&apos;inscrire

@@ -12,17 +12,29 @@ async function sendContactMessage(req: NextRequest) {
       return NextResponse.json({message: 'Vous devez remplir tous les champs'}, { status: 400})
     }
 
-    await prisma.user.create({
-      data: { 
-        email,
-        phone,
-        Message: {
-          create: {
-            content: content
-          }
+    const user = await prisma.user.findUnique({ where: { email: email}})
+
+    if(user) {
+      await prisma.message.create({
+        data: {
+          content: content,
+          user_id: user.id
         }
-       },
-    })
+      })
+    } else {
+      await prisma.user.create({
+        data: { 
+          email,
+          phone,
+          message: {
+            create: {
+              content: content
+            }
+          }
+         },
+      })
+
+    }
 
   } catch (error) {
     console.error('Erreur lors du parsing du body', error);

@@ -11,17 +11,25 @@ import Contact from "@/components/Contact";
 // import { Test } from "@/components/Test";
 // import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { Vortex } from "@/components/ui/vortex";
+import { getServerSession } from "next-auth";
+import NavBar from "@/components/NavBar";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession();
+
   return (
     <>
       <header className="max-w-screen relative h-screen overflow-hidden">
-        <Image
-          src={logo}
-          alt="logo de komandgo"
-          className="mx-auto drop-shadow-default py-5 md:py-0"
-          width={100}
-        />
+        {session?.user ? (
+          <NavBar name={session.user.name} />
+        ) : (
+          <Image
+            src={logo}
+            alt="logo de komandgo"
+            className="mx-auto drop-shadow-default py-5 md:py-0"
+            width={100}
+          />
+        )}
         <section className="">
           <Hero />
           <Vortex />
@@ -36,7 +44,6 @@ export default function Home() {
             id="visual"
             viewBox="0 0 960 540"
             width="100%"
-            height="auto"
             xmlns="http://www.w3.org/2000/svg"
             // xmlns:xlink="http://www.w3.org/1999/xlink"
             version="1.1"
@@ -355,10 +362,7 @@ export default function Home() {
       </section> */}
       <section className="contact relative">
         <ThreeTest />
-        <Contact />
-      </section>
-      <section>
-        <Footer />
+        <Contact email={session?.user?.email} />
       </section>
     </>
   );

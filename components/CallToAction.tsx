@@ -15,9 +15,9 @@ export default function CallToAction() {
     <Dialog>
       <DialogTrigger asChild>
         <Cta
-          variant={"cta"}
-          size={"lg"}
-          className="uppercase font-bold mb-10 md:text-xl md:p-7"
+          variant="cta"
+          size="lg"
+          className="group uppercase font-bold mb-10 md:text-xl md:p-7 rounded-full hover:scale-105"
         >
           Tester gratuitement
         </Cta>
