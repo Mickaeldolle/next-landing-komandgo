@@ -44,7 +44,6 @@ export default function SignupForm() {
       setIsLoading(false);
     }, 3000);
   }
-  console.log(session);
   return (
     <div className="text-gray-700">
       <form onSubmit={onSubmit}>

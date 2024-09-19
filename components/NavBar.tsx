@@ -57,7 +57,7 @@ function MenuBar({
           <li className="border-t pt-2">
             <Button
               type="button"
-              onClick={() => signOut()}
+              onClick={() => signOut({ callbackUrl: "/", redirect: true })}
               className="flex justify-between w-full"
             >
               Deconnexion{" "}
