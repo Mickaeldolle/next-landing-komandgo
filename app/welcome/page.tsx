@@ -17,7 +17,7 @@ export default async function Welcome() {
 
   return (
     <>
-      <NavBar name={session?.user?.name} />
+      <NavBar name={session?.user?.name} session={session} />
       <div className="px-4 md:border-l md:border-r md:w-3/5 md:mx-auto">
         <h1 className="text-2xl font-bold text-center my-5">
           Merci pour votre inscription !
