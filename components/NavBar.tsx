@@ -1,16 +1,20 @@
 "use client";
 import Image from "next/image";
 import logowhite from "../assets/logowhite.png";
-import { ChevronRight, LogOut, Menu } from "lucide-react";
+import { ChartCandlestick, ChevronRight, LogOut, Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import Link from "next/link";
-import { signOut } from "next-auth/react"; // Importation de signOut
+import { signOut } from "next-auth/react";
+import { buttonVariants } from "@/components/ui/button";
+import { Session } from "next-auth";
 
 function MenuBar({
+  session,
   setIsOpen,
 }: {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  session: Session;
 }) {
   return (
     <div className="menubar h-screen fixed top-0 right-0 bg-black/80 w-4/6 text-white shadow-2xl backdrop-blur-lg z-50 md:w-1/4">
@@ -66,13 +70,34 @@ function MenuBar({
               </span>
             </Button>
           </li>
+          {session?.user?.email === "dolle.mickael@gmail.com" && (
+            <li className="">
+              <Link
+                href={"/admin"}
+                className={`${buttonVariants({
+                  variant: "default",
+                })} flex justify-between w-full`}
+              >
+                Dashboard{" "}
+                <span>
+                  <ChartCandlestick size={24} />
+                </span>{" "}
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </div>
   );
 }
 
-export default function NavBar({ name }: { name: string | null | undefined }) {
+export default function NavBar({
+  name,
+  session,
+}: {
+  name: string | null | undefined;
+  session: Session;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -85,7 +110,7 @@ export default function NavBar({ name }: { name: string | null | undefined }) {
           </Button>
         </div>
       </div>
-      {isOpen && <MenuBar setIsOpen={setIsOpen} />}
+      {isOpen && <MenuBar setIsOpen={setIsOpen} session={session} />}
     </>
   );
 }

@@ -6,10 +6,7 @@ import Presentation from "@/components/Presentation";
 import Features from "@/components/Features";
 import Benefits from "@/components/Benefits";
 import ThreeTest from "@/components/ThreeTest";
-import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
-// import { Test } from "@/components/Test";
-// import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { Vortex } from "@/components/ui/vortex";
 import { getServerSession } from "next-auth";
 import NavBar from "@/components/NavBar";
@@ -21,7 +18,7 @@ export default async function Home() {
     <>
       <header className="max-w-screen relative h-screen overflow-hidden">
         {session?.user ? (
-          <NavBar name={session.user.name} />
+          <NavBar name={session.user.name} session={session} />
         ) : (
           <Image
             src={logo}

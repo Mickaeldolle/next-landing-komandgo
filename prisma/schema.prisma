@@ -8,16 +8,19 @@ datasource db {
 }
 
 model address {
-  id       Int     @id @default(autoincrement())
-  user_id  Int
-  label    String  @db.VarChar(50)
-  postcode String  @db.VarChar(10)
-  street   String  @db.VarChar(100)
-  city     String? @db.VarChar(100)
-  country  String? @db.VarChar(100)
-  number   String  @db.VarChar(10)
-  delivery Boolean
-  user     user    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "address_userId_fkey")
+  id         Int          @id @default(autoincrement())
+  user_id    Int?
+  label      String       @db.VarChar(250)
+  postcode   String       @db.VarChar(10)
+  street     String       @db.VarChar(100)
+  city       String       @db.VarChar(100)
+  number     String       @db.VarChar(10)
+  delivery   Boolean
+  lat        Decimal?     @db.Decimal
+  long       Decimal?     @db.Decimal
+  name       String?      @db.VarChar(100)
+  user       user?        @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "address_userId_fkey")
+  restaurant restaurant[]
 }
 
 model category {
@@ -28,7 +31,7 @@ model category {
   created_at    DateTime   @default(now()) @db.Timestamptz(6)
   position      Int?
   active        Boolean    @default(true)
-  updated_at    DateTime?  @updatedAt
+  updated_at    DateTime?  @updatedAt @db.Timestamptz(6)
   restaurant    restaurant @relation(fields: [restaurant_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
   food          food[]
 
@@ -44,7 +47,7 @@ model food {
   category_id                             Int?
   active                                  Boolean         @default(true)
   created_at                              DateTime        @default(now()) @db.Timestamptz(6)
-  updated_at                              DateTime?       @updatedAt
+  updated_at                              DateTime?       @updatedAt @db.Timestamptz(6)
   menu_price                              Int?
   additional_price                        Int?
   need_majority                           Boolean         @default(false)
@@ -55,6 +58,9 @@ model food {
   nb_element                              Int?
   alone_process_id                        Int?
   menu_process_id                         Int?
+  delivery                                Boolean         @default(false)
+  click_and_collect                       Boolean         @default(false)
+  on_site                                 Boolean         @default(true)
   process_food_alone_process_idToprocess  process?        @relation("food_alone_process_idToprocess", fields: [alone_process_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "food_alone_processId_fkey")
   category                                category?       @relation(fields: [category_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "food_categoryId_fkey")
   process_food_menu_process_idToprocess   process?        @relation("food_menu_process_idToprocess", fields: [menu_process_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "food_menu_processId_fkey")
@@ -82,7 +88,7 @@ model order {
   status               Boolean?
   delivered            Boolean?     @default(false)
   created_at           DateTime     @default(now()) @db.Timestamptz(6)
-  updated_at           DateTime?    @updatedAt
+  updated_at           DateTime?    @updatedAt @db.Timestamptz(6)
   approuved            Boolean?
   ready_time           String       @db.VarChar(5)
   comment              String?      @db.VarChar(500)
@@ -114,7 +120,7 @@ model process {
   label                                        String       @db.VarChar(50)
   restaurant_id                                String       @db.Uuid
   created_at                                   DateTime     @default(now()) @db.Timestamptz(6)
-  updated_at                                   DateTime?    @updatedAt
+  updated_at                                   DateTime?    @updatedAt @db.Timestamptz(6)
   food_food_alone_process_idToprocess          food[]       @relation("food_alone_process_idToprocess")
   food_food_menu_process_idToprocess           food[]       @relation("food_menu_process_idToprocess")
   restaurant_process_restaurant_idTorestaurant restaurant   @relation("process_restaurant_idTorestaurant", fields: [restaurant_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "process_resaurantId_fkey")
@@ -127,9 +133,9 @@ model restaurant {
   password                                  String?    @db.VarChar(250)
   name                                      String     @db.VarChar(55)
   description                               String     @db.VarChar(500)
-  address_label                             String     @db.VarChar(55)
-  address_city                              String     @db.VarChar(55)
-  address_cp                                String     @db.VarChar(55)
+  address_label                             String?    @db.VarChar(55)
+  address_city                              String?    @db.VarChar(55)
+  address_cp                                String?    @db.VarChar(55)
   phone                                     String     @db.VarChar(12)
   facebook_link                             String?    @db.VarChar(250)
   delivery                                  Boolean
@@ -137,7 +143,7 @@ model restaurant {
   logo_url                                  String?    @db.VarChar(500)
   banner_url                                String?    @db.VarChar(500)
   created_at                                DateTime   @default(now()) @db.Timestamptz(6)
-  updated_at                                DateTime?  @updatedAt
+  updated_at                                DateTime?  @updatedAt @db.Timestamptz(6)
   snapchat_link                             String?    @db.VarChar(250)
   instagram_link                            String?    @db.VarChar(250)
   is_open                                   Boolean    @default(false)
@@ -147,10 +153,12 @@ model restaurant {
   private_mode                              Boolean    @default(false)
   process_id                                Int?
   address_number                            String?    @db.VarChar(10)
+  address_id                                Int?
   category                                  category[]
   food                                      food[]
   order                                     order[]
   process_process_restaurant_idTorestaurant process[]  @relation("process_restaurant_idTorestaurant")
+  address                                   address?   @relation(fields: [address_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "restaurant_addressId_fkey")
   process_restaurant_process_idToprocess    process?   @relation("restaurant_process_idToprocess", fields: [process_id], references: [id], onUpdate: NoAction, map: "restaurant_processId_fkey")
   user                                      user       @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "restaurant_user_id_fk")
 
@@ -190,7 +198,7 @@ model subscription {
   created_at         DateTime  @default(now()) @db.Timestamptz(6)
   stripe_customer_id String?   @db.VarChar
   user_id            Int
-  updated_at         DateTime? @updatedAt
+  updated_at         DateTime? @updatedAt @db.Timestamptz(6)
   user               user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subscription_user_id_fk")
 
   @@index([user_id], map: "fki_subscription_user_id_fk")
@@ -203,7 +211,7 @@ model subscription_push {
   auth             String    @db.VarChar(250)
   content_encoding String?   @db.VarChar(250)
   created_at       DateTime  @default(now()) @db.Timestamptz(6)
-  updated_at       DateTime? @updatedAt
+  updated_at       DateTime? @updatedAt @db.Timestamptz(6)
   user_id          Int
   user             user      @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "subscription_push_userId_fkey")
 
@@ -223,7 +231,8 @@ model user {
   accept_terms      Boolean             @default(true)
   manual_active     Boolean             @default(false)
   created_at        DateTime            @default(now()) @db.Timestamptz(6)
-  updated_at        DateTime?           @updatedAt
+  updated_at        DateTime?           @updatedAt @db.Timestamptz(6)
+  owner             Boolean             @default(false)
   address           address[]
   message           message[]
   order             order[]

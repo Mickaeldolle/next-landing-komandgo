@@ -79,6 +79,9 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        custom: 'inset 0 20px 4px 0 rgb(0 0 0 / 0.05)'
+      }
     },
   },
   plugins: [

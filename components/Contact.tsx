@@ -18,7 +18,7 @@ export default function Contact({
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
-
+    console.log(data);
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/contact`,

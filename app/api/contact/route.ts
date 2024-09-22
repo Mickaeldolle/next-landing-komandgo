@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
-
+// import { PrismaClient } from '@prisma/client';
+// const prisma = new PrismaClient();
+import { PrismaClient as PrismaClient2 } from '@/prisma/generated/client2';
+const prisma2 = new PrismaClient2();
 
 async function sendContactMessage(req: NextRequest) {
   let body;
@@ -12,29 +13,13 @@ async function sendContactMessage(req: NextRequest) {
       return NextResponse.json({message: 'Vous devez remplir tous les champs'}, { status: 400})
     }
 
-    const user = await prisma.user.findUnique({ where: { email: email}})
+    const user = await prisma2.user.upsert({ 
+      where: {email: body.email},
+      create : { email, phone},
+      update: { phone}
+    })
 
-    if(user) {
-      await prisma.message.create({
-        data: {
-          content: content,
-          user_id: user.id
-        }
-      })
-    } else {
-      await prisma.user.create({
-        data: { 
-          email,
-          phone,
-          message: {
-            create: {
-              content: content
-            }
-          }
-         },
-      })
-
-    }
+  await prisma2.message.create({ data: { content: body.content, userId: user.id}})
 
   } catch (error) {
     console.error('Erreur lors du parsing du body', error);

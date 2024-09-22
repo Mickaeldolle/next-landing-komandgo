@@ -2,6 +2,7 @@ import NavBar from "@/components/NavBar";
 import StepForFirstConnexion from "./StepForFirstConnexion";
 import { getServerSession } from "next-auth";
 import { PrismaClient } from "@prisma/client";
+import Footer from "@/components/Footer";
 const prisma = new PrismaClient();
 
 export default async function Welcome() {
@@ -31,6 +32,7 @@ export default async function Welcome() {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 }
