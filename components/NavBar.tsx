@@ -14,7 +14,7 @@ function MenuBar({
   setIsOpen,
 }: {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  session: Session;
+  session: Session | null | undefined;
 }) {
   return (
     <div className="menubar h-screen fixed top-0 right-0 bg-black/80 w-4/6 text-white shadow-2xl backdrop-blur-lg z-50 md:w-1/4">
@@ -96,7 +96,7 @@ export default function NavBar({
   session,
 }: {
   name: string | null | undefined;
-  session: Session;
+  session: Session | null | undefined;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
