@@ -10,6 +10,8 @@ import Contact from "@/components/Contact";
 import { Vortex } from "@/components/ui/vortex";
 import { getServerSession } from "next-auth";
 import NavBar from "@/components/NavBar";
+import PushNotificationManager from "./PushNotificationManager";
+import Footer from "@/components/Footer";
 
 export default async function Home() {
   const session = await getServerSession();
@@ -32,6 +34,7 @@ export default async function Home() {
           <Vortex />
         </section>
       </header>
+      <section></section>
       <section>
         <Features />
       </section>
@@ -361,6 +364,7 @@ export default async function Home() {
         <ThreeTest />
         <Contact email={session?.user?.email} />
       </section>
+      <Footer />
     </>
   );
 }
