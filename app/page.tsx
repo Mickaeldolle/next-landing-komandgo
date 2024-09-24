@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import Image from "next/image";
 import logo from "../assets/logowhite.png";
 import Hero from "@/components/Hero";
@@ -10,7 +9,6 @@ import Contact from "@/components/Contact";
 import { Vortex } from "@/components/ui/vortex";
 import { getServerSession } from "next-auth";
 import NavBar from "@/components/NavBar";
-import PushNotificationManager from "./PushNotificationManager";
 import Footer from "@/components/Footer";
 
 export default async function Home() {
@@ -20,7 +18,7 @@ export default async function Home() {
     <>
       <header className="max-w-screen relative h-screen overflow-hidden">
         {session?.user ? (
-          <NavBar name={session.user.name} session={session} />
+          <NavBar session={session} />
         ) : (
           <Image
             src={logo}
