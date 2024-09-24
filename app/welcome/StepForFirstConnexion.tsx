@@ -16,7 +16,7 @@ export default async function StepForFirstConnexion() {
   }
   return (
     <>
-      {!user?.password && !user?.phone && <CreatePassword user={user} />}
+      {(!user?.password || !user?.phone) && <CreatePassword user={user} />}
       {/* <CreatePassword user={user} /> */}
       <div className="md:w-3/5 mx-auto">
         <div className="text-3xl font-bold border w-10 mx-auto rounded-full text-white bg-[#161b2f] mb-2">
