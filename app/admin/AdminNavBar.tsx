@@ -1,11 +1,10 @@
 "use client";
 import { ChartCandlestick, House, Mail, User, UserPlus } from "lucide-react";
 import Link from "next/link";
-// import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function AdminNavBar() {
-  // const pathname = usePathname(); // Récupère le chemin actuel de l'URL
-  // console.log(pathname);
   const links = [
     {
       href: "/admin",
@@ -35,17 +34,49 @@ export default function AdminNavBar() {
   ];
 
   return (
-    <div className="fixed w-full bg-white shadow-xl rounded-b-xl">
+    <div className="fixed w-full bg-white rounded-b-xl">
       <ul className="flex p-5 justify-around md:justify-evenly">
         {links.map((link, index) => (
-          <li key={index}>
-            <Link href={link.href} className="flex items-center">
-              {link.icon}
-              <div className="hidden md:block">{link.label}</div>
-            </Link>
-          </li>
+          <LinkButton key={index} link={link} />
         ))}
       </ul>
     </div>
+  );
+}
+
+type LinkButtonProps = {
+  link: {
+    href: string;
+    label: string;
+    icon: JSX.Element;
+  };
+};
+
+function LinkButton({ link }: LinkButtonProps) {
+  const [currentLinkActive, setCurrentLinkActive] = useState(false);
+
+  const pathName = usePathname();
+
+  useEffect(() => {
+    if (pathName === link.href) {
+      setCurrentLinkActive(true);
+    } else {
+      setCurrentLinkActive(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathName]);
+
+  return (
+    <li>
+      <Link
+        href={link.href}
+        className={`${
+          currentLinkActive ? "shadow-[0px_0px_20px_gray]" : ""
+        } flex items-center p-2 rounded-xl`}
+      >
+        {link.icon}
+        <div className="hidden md:block">{link.label}</div>
+      </Link>
+    </li>
   );
 }

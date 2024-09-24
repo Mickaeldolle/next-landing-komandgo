@@ -24,7 +24,7 @@ export default function CallToAction() {
       </DialogTrigger>
       <DialogContent className="max-w-[90%] md:w-auto bg-white rounded-md">
         <DialogHeader>
-          <DialogTitle>Connexion</DialogTitle>
+          <DialogTitle className="text-center">Bienvenue !</DialogTitle>
           <DialogDescription>
             Créez votre compte et commencez à automatiser la prise de commande.
           </DialogDescription>

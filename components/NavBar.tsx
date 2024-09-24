@@ -92,10 +92,8 @@ function MenuBar({
 }
 
 export default function NavBar({
-  name,
   session,
 }: {
-  name: string | null | undefined;
   session: Session | null | undefined;
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,7 +102,9 @@ export default function NavBar({
       <div className="navbar w-full px-4 relative h-20">
         <div className="z-10 bg-[#161b2f]/60 top-0 md:left-1/2 md:transform md:-translate-x-1/2 w-11/12 flex items-center justify-between px-5 rounded-full fixed mt-3 shadow-2xl backdrop-blur-sm md:w-1/5">
           <Image width={50} src={logowhite} alt="logo de komandgo" />
-          {name && <div className="text-gray-500">{name}</div>}
+          {session?.user?.name && (
+            <div className="text-gray-500">{session?.user.name}</div>
+          )}
           <Button variant={"ghost"} onClick={() => setIsOpen(!isOpen)}>
             <Menu size={40} color="white" />
           </Button>

@@ -21,7 +21,7 @@ export default function DashboardLayout({
 }>) {
   return (
     <div className="flex flex-col min-h-screen max-w-screen overflow-hidden relative">
-      <div className="h-16 w-full mb-2">
+      <div className="h-20 w-full mb-2">
         <AdminNavBar />
       </div>
       <main
