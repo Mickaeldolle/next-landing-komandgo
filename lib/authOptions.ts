@@ -101,8 +101,9 @@ const authOptions: NextAuthOptions = {
             email: profile.email,
             lastname: profile.family_name ?? null,
             firstname: profile?.given_name ?? null,
+            owner: true,
           },
-          update: { lastname: profile?.name },
+          update: { lastname: profile?.family_name, firstname: profile?.given_name, owner: true },
         });
         
         // On ajoute aussi dans la db prospect lors d'un nouvel ajout a la db
@@ -110,9 +111,10 @@ const authOptions: NextAuthOptions = {
           where: { email: profile.email },
           create: {
             email: profile.email,
-            name: profile.name ?? null,
+            lastname: profile.family_name ?? null,
+            firstname: profile?.given_name ?? null,
           },
-          update: { email: profile.email },
+          update: { email: profile.email, lastname: profile?.family_name, firstname: profile?.given_name },
         });
       }
       return true; // Pour toutes les autres connexions (y compris par Credentials)
