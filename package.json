@@ -12,8 +12,8 @@
     "migrateprospect:prod": "./scripts/prod/migrate-prospect-prod.sh",
     "migrateall:prod": "npm run migratedbapp:prod && npm run migratedbprospect:prod",
     "build": "next build",
-    "start": "./scripts/prod/start-prod.sh",
-    "prod-next": "next start -p 4000",
+    "start": "next start -p 4000",
+    "prod": "./scripts/prod/start-prod.sh",
     "lint": "next lint"
   },
   "dependencies": {
