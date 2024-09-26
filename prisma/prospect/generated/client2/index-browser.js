@@ -147,6 +147,13 @@ exports.Prisma.ProspectionStatusScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.TestScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -166,7 +173,8 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   Message: 'Message',
   User: 'User',
-  ProspectionStatus: 'ProspectionStatus'
+  ProspectionStatus: 'ProspectionStatus',
+  Test: 'Test'
 };
 
 /**

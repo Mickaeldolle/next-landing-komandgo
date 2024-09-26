@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { hashSync } from 'bcrypt';
 
 import { PrismaClient } from '@prisma/client';
-import { PrismaClient as PrismaClient2 } from '@/prisma/generated/client2';
+import { PrismaClient as PrismaClient2 } from '@/prisma/prospect/generated/client2';
 const prisma = new PrismaClient();
 const prisma2 = new PrismaClient2();
 

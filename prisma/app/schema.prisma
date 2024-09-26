@@ -234,3 +234,8 @@ model user {
   subscription      subscription[]
   subscription_push subscription_push[]
 }
+
+model Test {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(55)
+}

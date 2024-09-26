@@ -1,9 +1,8 @@
 import CreatePassword from "@/components/CreatePassword";
 import { getServerSession } from "next-auth";
-import { PrismaClient as PrismaClient2 } from "@/prisma/generated/client2";
+import { PrismaClient as PrismaClient2 } from "@/prisma/prospect/generated/client2";
 const prisma2 = new PrismaClient2();
 import Link from "next/link";
-// import PhoneInput from "./phoneInput";
 
 export default async function StepForFirstConnexion() {
   const session = await getServerSession();

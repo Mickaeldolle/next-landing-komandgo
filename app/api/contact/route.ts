@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 // import { PrismaClient } from '@prisma/client';
 // const prisma = new PrismaClient();
-import { PrismaClient as PrismaClient2 } from '@/prisma/generated/client2';
+import { PrismaClient as PrismaClient2 } from '@/prisma/prospect/generated/client2';
 const prisma2 = new PrismaClient2();
 
 async function sendContactMessage(req: NextRequest) {

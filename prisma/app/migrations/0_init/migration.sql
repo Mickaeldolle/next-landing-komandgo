@@ -144,6 +144,7 @@ CREATE TABLE "step" (
     "depend_size" BOOLEAN NOT NULL DEFAULT false,
     "all_selected" BOOLEAN NOT NULL DEFAULT false,
     "label" VARCHAR(50) NOT NULL,
+    "overwrite_price" INTEGER,
     "ref_step_id" INTEGER,
 
     CONSTRAINT "step_pkey" PRIMARY KEY ("id")
@@ -204,6 +205,14 @@ CREATE TABLE "user" (
     "owner" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "user_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Test" (
+    "id" SERIAL NOT NULL,
+    "name" VARCHAR(55) NOT NULL,
+
+    CONSTRAINT "Test_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -298,3 +307,4 @@ ALTER TABLE "subscription" ADD CONSTRAINT "subscription_user_id_fk" FOREIGN KEY 
 
 -- AddForeignKey
 ALTER TABLE "subscription_push" ADD CONSTRAINT "subscription_push_userId_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+

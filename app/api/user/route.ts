@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient as PrismaClient2 } from '@/prisma/generated/client2';
+import { PrismaClient as PrismaClient2 } from '@/prisma/prospect/generated/client2';
 import { PrismaClient } from '@prisma/client';
 import { getServerSession } from 'next-auth';
 import bcrypt from 'bcrypt'
