@@ -1,19 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Message` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "Message" DROP CONSTRAINT "Message_userId_fkey";
-
--- DropTable
-DROP TABLE "Message";
-
--- DropTable
-DROP TABLE "User";
-
 -- CreateTable
 CREATE TABLE "address" (
     "id" SERIAL NOT NULL,
@@ -71,15 +55,6 @@ CREATE TABLE "food" (
     "on_site" BOOLEAN NOT NULL DEFAULT true,
 
     CONSTRAINT "food_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "message" (
-    "id" SERIAL NOT NULL,
-    "content" VARCHAR(500) NOT NULL,
-    "user_id" INTEGER NOT NULL,
-
-    CONSTRAINT "message_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -275,9 +250,6 @@ ALTER TABLE "food" ADD CONSTRAINT "food_menu_processId_fkey" FOREIGN KEY ("menu_
 
 -- AddForeignKey
 ALTER TABLE "food" ADD CONSTRAINT "food_restaurantId_fk" FOREIGN KEY ("restaurant_id") REFERENCES "restaurant"("id") ON DELETE CASCADE ON UPDATE NO ACTION;
-
--- AddForeignKey
-ALTER TABLE "message" ADD CONSTRAINT "message_userId_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 
 -- AddForeignKey
 ALTER TABLE "order" ADD CONSTRAINT "order_restaurantId_fkey" FOREIGN KEY ("restaurant_id") REFERENCES "restaurant"("id") ON DELETE NO ACTION ON UPDATE NO ACTION;

@@ -20,10 +20,6 @@ export default function Hero() {
             vos clients 🚀
           </p>
         </div>
-        {/* //! à supprimé, juste pour redirigé l'utilisateur pour le remercier après la connexion ! */}
-        {/* <div className="border text-white">
-          <Link href="/thank">Ici</Link>
-        </div> */}
         <div className="text-center md:text-end">
           <AuthProvider>
             <CallToAction />

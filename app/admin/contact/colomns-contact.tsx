@@ -1,6 +1,6 @@
 "use client";
 
-import { Message, User } from "@/prisma/generated/client2";
+import { Message, User } from "@/prisma/prospect/generated/client2";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ColumnDef } from "@tanstack/react-table";
 import React from "react";

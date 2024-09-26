@@ -1,0 +1,40 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "./generated/client2"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_PROSPECT")
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  content   String   @db.VarChar(500)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int
+  User      User     @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id                  Int       @id @default(autoincrement())
+  email               String    @unique
+  firstname           String?
+  lastname            String?
+  password            String?
+  avatar              String?
+  phone               String?
+  prospectionStatusId Int?      @default(1)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  Message             Message[]
+}
+
+model ProspectionStatus {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -3,7 +3,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { ColumnDef } from "@tanstack/react-table";
 import DropDownMenuActionProspect from "@/components/DropDownOptionsProspect";
-import { User } from "@/prisma/generated/client2";
+import { User } from "@/prisma/prospect/generated/client2";
 import { DataTableColumnHeader } from "@/components/data-table-colomn-header";
 
 // This type is used to define the shape of our data.

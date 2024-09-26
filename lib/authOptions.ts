@@ -2,7 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaClient } from '@prisma/client';
-import { PrismaClient as PrismaClient2 } from '@/prisma/generated/client2';
+import { PrismaClient as PrismaClient2 } from '@/prisma/prospect/generated/client2';
 import { compareSync } from "bcrypt";
 
 const prisma = new PrismaClient();

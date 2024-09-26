@@ -23,6 +23,11 @@ export type Message = $Result.DefaultSelection<Prisma.$MessagePayload>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model ProspectionStatus
+ * 
+ */
+export type ProspectionStatus = $Result.DefaultSelection<Prisma.$ProspectionStatusPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -166,6 +171,16 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs>;
+
+  /**
+   * `prisma.prospectionStatus`: Exposes CRUD operations for the **ProspectionStatus** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProspectionStatuses
+    * const prospectionStatuses = await prisma.prospectionStatus.findMany()
+    * ```
+    */
+  get prospectionStatus(): Prisma.ProspectionStatusDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -606,7 +621,8 @@ export namespace Prisma {
 
   export const ModelName: {
     Message: 'Message',
-    User: 'User'
+    User: 'User',
+    ProspectionStatus: 'ProspectionStatus'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -622,7 +638,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "message" | "user"
+      modelProps: "message" | "user" | "prospectionStatus"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -763,6 +779,76 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProspectionStatus: {
+        payload: Prisma.$ProspectionStatusPayload<ExtArgs>
+        fields: Prisma.ProspectionStatusFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProspectionStatusFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProspectionStatusPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProspectionStatusFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProspectionStatusPayload>
+          }
+          findFirst: {
+            args: Prisma.ProspectionStatusFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProspectionStatusPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProspectionStatusFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProspectionStatusPayload>
+          }
+          findMany: {
+            args: Prisma.ProspectionStatusFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProspectionStatusPayload>[]
+          }
+          create: {
+            args: Prisma.ProspectionStatusCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProspectionStatusPayload>
+          }
+          createMany: {
+            args: Prisma.ProspectionStatusCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProspectionStatusCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProspectionStatusPayload>[]
+          }
+          delete: {
+            args: Prisma.ProspectionStatusDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProspectionStatusPayload>
+          }
+          update: {
+            args: Prisma.ProspectionStatusUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProspectionStatusPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProspectionStatusDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProspectionStatusUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ProspectionStatusUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProspectionStatusPayload>
+          }
+          aggregate: {
+            args: Prisma.ProspectionStatusAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProspectionStatus>
+          }
+          groupBy: {
+            args: Prisma.ProspectionStatusGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProspectionStatusGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProspectionStatusCountArgs<ExtArgs>
+            result: $Utils.Optional<ProspectionStatusCountAggregateOutputType> | number
           }
         }
       }
@@ -1942,10 +2028,12 @@ export namespace Prisma {
 
   export type UserAvgAggregateOutputType = {
     id: number | null
+    prospectionStatusId: number | null
   }
 
   export type UserSumAggregateOutputType = {
     id: number | null
+    prospectionStatusId: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -1955,9 +2043,10 @@ export namespace Prisma {
     lastname: string | null
     password: string | null
     avatar: string | null
+    phone: string | null
+    prospectionStatusId: number | null
     createdAt: Date | null
     updatedAt: Date | null
-    phone: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1967,9 +2056,10 @@ export namespace Prisma {
     lastname: string | null
     password: string | null
     avatar: string | null
+    phone: string | null
+    prospectionStatusId: number | null
     createdAt: Date | null
     updatedAt: Date | null
-    phone: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1979,19 +2069,22 @@ export namespace Prisma {
     lastname: number
     password: number
     avatar: number
+    phone: number
+    prospectionStatusId: number
     createdAt: number
     updatedAt: number
-    phone: number
     _all: number
   }
 
 
   export type UserAvgAggregateInputType = {
     id?: true
+    prospectionStatusId?: true
   }
 
   export type UserSumAggregateInputType = {
     id?: true
+    prospectionStatusId?: true
   }
 
   export type UserMinAggregateInputType = {
@@ -2001,9 +2094,10 @@ export namespace Prisma {
     lastname?: true
     password?: true
     avatar?: true
+    phone?: true
+    prospectionStatusId?: true
     createdAt?: true
     updatedAt?: true
-    phone?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2013,9 +2107,10 @@ export namespace Prisma {
     lastname?: true
     password?: true
     avatar?: true
+    phone?: true
+    prospectionStatusId?: true
     createdAt?: true
     updatedAt?: true
-    phone?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2025,9 +2120,10 @@ export namespace Prisma {
     lastname?: true
     password?: true
     avatar?: true
+    phone?: true
+    prospectionStatusId?: true
     createdAt?: true
     updatedAt?: true
-    phone?: true
     _all?: true
   }
 
@@ -2124,9 +2220,10 @@ export namespace Prisma {
     lastname: string | null
     password: string | null
     avatar: string | null
+    phone: string | null
+    prospectionStatusId: number | null
     createdAt: Date
     updatedAt: Date
-    phone: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -2155,9 +2252,10 @@ export namespace Prisma {
     lastname?: boolean
     password?: boolean
     avatar?: boolean
+    phone?: boolean
+    prospectionStatusId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    phone?: boolean
     Message?: boolean | User$MessageArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -2169,9 +2267,10 @@ export namespace Prisma {
     lastname?: boolean
     password?: boolean
     avatar?: boolean
+    phone?: boolean
+    prospectionStatusId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    phone?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2181,9 +2280,10 @@ export namespace Prisma {
     lastname?: boolean
     password?: boolean
     avatar?: boolean
+    phone?: boolean
+    prospectionStatusId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    phone?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2204,9 +2304,10 @@ export namespace Prisma {
       lastname: string | null
       password: string | null
       avatar: string | null
+      phone: string | null
+      prospectionStatusId: number | null
       createdAt: Date
       updatedAt: Date
-      phone: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2607,9 +2708,10 @@ export namespace Prisma {
     readonly lastname: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly avatar: FieldRef<"User", 'String'>
+    readonly phone: FieldRef<"User", 'String'>
+    readonly prospectionStatusId: FieldRef<"User", 'Int'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
-    readonly phone: FieldRef<"User", 'String'>
   }
     
 
@@ -2959,6 +3061,906 @@ export namespace Prisma {
 
 
   /**
+   * Model ProspectionStatus
+   */
+
+  export type AggregateProspectionStatus = {
+    _count: ProspectionStatusCountAggregateOutputType | null
+    _avg: ProspectionStatusAvgAggregateOutputType | null
+    _sum: ProspectionStatusSumAggregateOutputType | null
+    _min: ProspectionStatusMinAggregateOutputType | null
+    _max: ProspectionStatusMaxAggregateOutputType | null
+  }
+
+  export type ProspectionStatusAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ProspectionStatusSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ProspectionStatusMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProspectionStatusMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProspectionStatusCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ProspectionStatusAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ProspectionStatusSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ProspectionStatusMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProspectionStatusMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProspectionStatusCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ProspectionStatusAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProspectionStatus to aggregate.
+     */
+    where?: ProspectionStatusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProspectionStatuses to fetch.
+     */
+    orderBy?: ProspectionStatusOrderByWithRelationInput | ProspectionStatusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProspectionStatusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProspectionStatuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProspectionStatuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProspectionStatuses
+    **/
+    _count?: true | ProspectionStatusCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProspectionStatusAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProspectionStatusSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProspectionStatusMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProspectionStatusMaxAggregateInputType
+  }
+
+  export type GetProspectionStatusAggregateType<T extends ProspectionStatusAggregateArgs> = {
+        [P in keyof T & keyof AggregateProspectionStatus]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProspectionStatus[P]>
+      : GetScalarType<T[P], AggregateProspectionStatus[P]>
+  }
+
+
+
+
+  export type ProspectionStatusGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProspectionStatusWhereInput
+    orderBy?: ProspectionStatusOrderByWithAggregationInput | ProspectionStatusOrderByWithAggregationInput[]
+    by: ProspectionStatusScalarFieldEnum[] | ProspectionStatusScalarFieldEnum
+    having?: ProspectionStatusScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProspectionStatusCountAggregateInputType | true
+    _avg?: ProspectionStatusAvgAggregateInputType
+    _sum?: ProspectionStatusSumAggregateInputType
+    _min?: ProspectionStatusMinAggregateInputType
+    _max?: ProspectionStatusMaxAggregateInputType
+  }
+
+  export type ProspectionStatusGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ProspectionStatusCountAggregateOutputType | null
+    _avg: ProspectionStatusAvgAggregateOutputType | null
+    _sum: ProspectionStatusSumAggregateOutputType | null
+    _min: ProspectionStatusMinAggregateOutputType | null
+    _max: ProspectionStatusMaxAggregateOutputType | null
+  }
+
+  type GetProspectionStatusGroupByPayload<T extends ProspectionStatusGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProspectionStatusGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProspectionStatusGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProspectionStatusGroupByOutputType[P]>
+            : GetScalarType<T[P], ProspectionStatusGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProspectionStatusSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["prospectionStatus"]>
+
+  export type ProspectionStatusSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["prospectionStatus"]>
+
+  export type ProspectionStatusSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $ProspectionStatusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProspectionStatus"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["prospectionStatus"]>
+    composites: {}
+  }
+
+  type ProspectionStatusGetPayload<S extends boolean | null | undefined | ProspectionStatusDefaultArgs> = $Result.GetResult<Prisma.$ProspectionStatusPayload, S>
+
+  type ProspectionStatusCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ProspectionStatusFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ProspectionStatusCountAggregateInputType | true
+    }
+
+  export interface ProspectionStatusDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProspectionStatus'], meta: { name: 'ProspectionStatus' } }
+    /**
+     * Find zero or one ProspectionStatus that matches the filter.
+     * @param {ProspectionStatusFindUniqueArgs} args - Arguments to find a ProspectionStatus
+     * @example
+     * // Get one ProspectionStatus
+     * const prospectionStatus = await prisma.prospectionStatus.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProspectionStatusFindUniqueArgs>(args: SelectSubset<T, ProspectionStatusFindUniqueArgs<ExtArgs>>): Prisma__ProspectionStatusClient<$Result.GetResult<Prisma.$ProspectionStatusPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ProspectionStatus that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ProspectionStatusFindUniqueOrThrowArgs} args - Arguments to find a ProspectionStatus
+     * @example
+     * // Get one ProspectionStatus
+     * const prospectionStatus = await prisma.prospectionStatus.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProspectionStatusFindUniqueOrThrowArgs>(args: SelectSubset<T, ProspectionStatusFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProspectionStatusClient<$Result.GetResult<Prisma.$ProspectionStatusPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ProspectionStatus that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProspectionStatusFindFirstArgs} args - Arguments to find a ProspectionStatus
+     * @example
+     * // Get one ProspectionStatus
+     * const prospectionStatus = await prisma.prospectionStatus.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProspectionStatusFindFirstArgs>(args?: SelectSubset<T, ProspectionStatusFindFirstArgs<ExtArgs>>): Prisma__ProspectionStatusClient<$Result.GetResult<Prisma.$ProspectionStatusPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ProspectionStatus that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProspectionStatusFindFirstOrThrowArgs} args - Arguments to find a ProspectionStatus
+     * @example
+     * // Get one ProspectionStatus
+     * const prospectionStatus = await prisma.prospectionStatus.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProspectionStatusFindFirstOrThrowArgs>(args?: SelectSubset<T, ProspectionStatusFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProspectionStatusClient<$Result.GetResult<Prisma.$ProspectionStatusPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ProspectionStatuses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProspectionStatusFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProspectionStatuses
+     * const prospectionStatuses = await prisma.prospectionStatus.findMany()
+     * 
+     * // Get first 10 ProspectionStatuses
+     * const prospectionStatuses = await prisma.prospectionStatus.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const prospectionStatusWithIdOnly = await prisma.prospectionStatus.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProspectionStatusFindManyArgs>(args?: SelectSubset<T, ProspectionStatusFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProspectionStatusPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ProspectionStatus.
+     * @param {ProspectionStatusCreateArgs} args - Arguments to create a ProspectionStatus.
+     * @example
+     * // Create one ProspectionStatus
+     * const ProspectionStatus = await prisma.prospectionStatus.create({
+     *   data: {
+     *     // ... data to create a ProspectionStatus
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProspectionStatusCreateArgs>(args: SelectSubset<T, ProspectionStatusCreateArgs<ExtArgs>>): Prisma__ProspectionStatusClient<$Result.GetResult<Prisma.$ProspectionStatusPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ProspectionStatuses.
+     * @param {ProspectionStatusCreateManyArgs} args - Arguments to create many ProspectionStatuses.
+     * @example
+     * // Create many ProspectionStatuses
+     * const prospectionStatus = await prisma.prospectionStatus.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProspectionStatusCreateManyArgs>(args?: SelectSubset<T, ProspectionStatusCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProspectionStatuses and returns the data saved in the database.
+     * @param {ProspectionStatusCreateManyAndReturnArgs} args - Arguments to create many ProspectionStatuses.
+     * @example
+     * // Create many ProspectionStatuses
+     * const prospectionStatus = await prisma.prospectionStatus.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProspectionStatuses and only return the `id`
+     * const prospectionStatusWithIdOnly = await prisma.prospectionStatus.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProspectionStatusCreateManyAndReturnArgs>(args?: SelectSubset<T, ProspectionStatusCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProspectionStatusPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ProspectionStatus.
+     * @param {ProspectionStatusDeleteArgs} args - Arguments to delete one ProspectionStatus.
+     * @example
+     * // Delete one ProspectionStatus
+     * const ProspectionStatus = await prisma.prospectionStatus.delete({
+     *   where: {
+     *     // ... filter to delete one ProspectionStatus
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProspectionStatusDeleteArgs>(args: SelectSubset<T, ProspectionStatusDeleteArgs<ExtArgs>>): Prisma__ProspectionStatusClient<$Result.GetResult<Prisma.$ProspectionStatusPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ProspectionStatus.
+     * @param {ProspectionStatusUpdateArgs} args - Arguments to update one ProspectionStatus.
+     * @example
+     * // Update one ProspectionStatus
+     * const prospectionStatus = await prisma.prospectionStatus.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProspectionStatusUpdateArgs>(args: SelectSubset<T, ProspectionStatusUpdateArgs<ExtArgs>>): Prisma__ProspectionStatusClient<$Result.GetResult<Prisma.$ProspectionStatusPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ProspectionStatuses.
+     * @param {ProspectionStatusDeleteManyArgs} args - Arguments to filter ProspectionStatuses to delete.
+     * @example
+     * // Delete a few ProspectionStatuses
+     * const { count } = await prisma.prospectionStatus.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProspectionStatusDeleteManyArgs>(args?: SelectSubset<T, ProspectionStatusDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProspectionStatuses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProspectionStatusUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProspectionStatuses
+     * const prospectionStatus = await prisma.prospectionStatus.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProspectionStatusUpdateManyArgs>(args: SelectSubset<T, ProspectionStatusUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ProspectionStatus.
+     * @param {ProspectionStatusUpsertArgs} args - Arguments to update or create a ProspectionStatus.
+     * @example
+     * // Update or create a ProspectionStatus
+     * const prospectionStatus = await prisma.prospectionStatus.upsert({
+     *   create: {
+     *     // ... data to create a ProspectionStatus
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProspectionStatus we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProspectionStatusUpsertArgs>(args: SelectSubset<T, ProspectionStatusUpsertArgs<ExtArgs>>): Prisma__ProspectionStatusClient<$Result.GetResult<Prisma.$ProspectionStatusPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ProspectionStatuses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProspectionStatusCountArgs} args - Arguments to filter ProspectionStatuses to count.
+     * @example
+     * // Count the number of ProspectionStatuses
+     * const count = await prisma.prospectionStatus.count({
+     *   where: {
+     *     // ... the filter for the ProspectionStatuses we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProspectionStatusCountArgs>(
+      args?: Subset<T, ProspectionStatusCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProspectionStatusCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProspectionStatus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProspectionStatusAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProspectionStatusAggregateArgs>(args: Subset<T, ProspectionStatusAggregateArgs>): Prisma.PrismaPromise<GetProspectionStatusAggregateType<T>>
+
+    /**
+     * Group by ProspectionStatus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProspectionStatusGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProspectionStatusGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProspectionStatusGroupByArgs['orderBy'] }
+        : { orderBy?: ProspectionStatusGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProspectionStatusGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProspectionStatusGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProspectionStatus model
+   */
+  readonly fields: ProspectionStatusFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProspectionStatus.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProspectionStatusClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProspectionStatus model
+   */ 
+  interface ProspectionStatusFieldRefs {
+    readonly id: FieldRef<"ProspectionStatus", 'Int'>
+    readonly name: FieldRef<"ProspectionStatus", 'String'>
+    readonly createdAt: FieldRef<"ProspectionStatus", 'DateTime'>
+    readonly updatedAt: FieldRef<"ProspectionStatus", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProspectionStatus findUnique
+   */
+  export type ProspectionStatusFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelect<ExtArgs> | null
+    /**
+     * Filter, which ProspectionStatus to fetch.
+     */
+    where: ProspectionStatusWhereUniqueInput
+  }
+
+  /**
+   * ProspectionStatus findUniqueOrThrow
+   */
+  export type ProspectionStatusFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelect<ExtArgs> | null
+    /**
+     * Filter, which ProspectionStatus to fetch.
+     */
+    where: ProspectionStatusWhereUniqueInput
+  }
+
+  /**
+   * ProspectionStatus findFirst
+   */
+  export type ProspectionStatusFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelect<ExtArgs> | null
+    /**
+     * Filter, which ProspectionStatus to fetch.
+     */
+    where?: ProspectionStatusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProspectionStatuses to fetch.
+     */
+    orderBy?: ProspectionStatusOrderByWithRelationInput | ProspectionStatusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProspectionStatuses.
+     */
+    cursor?: ProspectionStatusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProspectionStatuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProspectionStatuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProspectionStatuses.
+     */
+    distinct?: ProspectionStatusScalarFieldEnum | ProspectionStatusScalarFieldEnum[]
+  }
+
+  /**
+   * ProspectionStatus findFirstOrThrow
+   */
+  export type ProspectionStatusFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelect<ExtArgs> | null
+    /**
+     * Filter, which ProspectionStatus to fetch.
+     */
+    where?: ProspectionStatusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProspectionStatuses to fetch.
+     */
+    orderBy?: ProspectionStatusOrderByWithRelationInput | ProspectionStatusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProspectionStatuses.
+     */
+    cursor?: ProspectionStatusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProspectionStatuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProspectionStatuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProspectionStatuses.
+     */
+    distinct?: ProspectionStatusScalarFieldEnum | ProspectionStatusScalarFieldEnum[]
+  }
+
+  /**
+   * ProspectionStatus findMany
+   */
+  export type ProspectionStatusFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelect<ExtArgs> | null
+    /**
+     * Filter, which ProspectionStatuses to fetch.
+     */
+    where?: ProspectionStatusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProspectionStatuses to fetch.
+     */
+    orderBy?: ProspectionStatusOrderByWithRelationInput | ProspectionStatusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProspectionStatuses.
+     */
+    cursor?: ProspectionStatusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProspectionStatuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProspectionStatuses.
+     */
+    skip?: number
+    distinct?: ProspectionStatusScalarFieldEnum | ProspectionStatusScalarFieldEnum[]
+  }
+
+  /**
+   * ProspectionStatus create
+   */
+  export type ProspectionStatusCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelect<ExtArgs> | null
+    /**
+     * The data needed to create a ProspectionStatus.
+     */
+    data: XOR<ProspectionStatusCreateInput, ProspectionStatusUncheckedCreateInput>
+  }
+
+  /**
+   * ProspectionStatus createMany
+   */
+  export type ProspectionStatusCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProspectionStatuses.
+     */
+    data: ProspectionStatusCreateManyInput | ProspectionStatusCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProspectionStatus createManyAndReturn
+   */
+  export type ProspectionStatusCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ProspectionStatuses.
+     */
+    data: ProspectionStatusCreateManyInput | ProspectionStatusCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProspectionStatus update
+   */
+  export type ProspectionStatusUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelect<ExtArgs> | null
+    /**
+     * The data needed to update a ProspectionStatus.
+     */
+    data: XOR<ProspectionStatusUpdateInput, ProspectionStatusUncheckedUpdateInput>
+    /**
+     * Choose, which ProspectionStatus to update.
+     */
+    where: ProspectionStatusWhereUniqueInput
+  }
+
+  /**
+   * ProspectionStatus updateMany
+   */
+  export type ProspectionStatusUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProspectionStatuses.
+     */
+    data: XOR<ProspectionStatusUpdateManyMutationInput, ProspectionStatusUncheckedUpdateManyInput>
+    /**
+     * Filter which ProspectionStatuses to update
+     */
+    where?: ProspectionStatusWhereInput
+  }
+
+  /**
+   * ProspectionStatus upsert
+   */
+  export type ProspectionStatusUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelect<ExtArgs> | null
+    /**
+     * The filter to search for the ProspectionStatus to update in case it exists.
+     */
+    where: ProspectionStatusWhereUniqueInput
+    /**
+     * In case the ProspectionStatus found by the `where` argument doesn't exist, create a new ProspectionStatus with this data.
+     */
+    create: XOR<ProspectionStatusCreateInput, ProspectionStatusUncheckedCreateInput>
+    /**
+     * In case the ProspectionStatus was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProspectionStatusUpdateInput, ProspectionStatusUncheckedUpdateInput>
+  }
+
+  /**
+   * ProspectionStatus delete
+   */
+  export type ProspectionStatusDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelect<ExtArgs> | null
+    /**
+     * Filter which ProspectionStatus to delete.
+     */
+    where: ProspectionStatusWhereUniqueInput
+  }
+
+  /**
+   * ProspectionStatus deleteMany
+   */
+  export type ProspectionStatusDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProspectionStatuses to delete
+     */
+    where?: ProspectionStatusWhereInput
+  }
+
+  /**
+   * ProspectionStatus without action
+   */
+  export type ProspectionStatusDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProspectionStatus
+     */
+    select?: ProspectionStatusSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -2990,12 +3992,23 @@ export namespace Prisma {
     lastname: 'lastname',
     password: 'password',
     avatar: 'avatar',
+    phone: 'phone',
+    prospectionStatusId: 'prospectionStatusId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    phone: 'phone'
+    updatedAt: 'updatedAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const ProspectionStatusScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ProspectionStatusScalarFieldEnum = (typeof ProspectionStatusScalarFieldEnum)[keyof typeof ProspectionStatusScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3153,9 +4166,10 @@ export namespace Prisma {
     lastname?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
     avatar?: StringNullableFilter<"User"> | string | null
+    phone?: StringNullableFilter<"User"> | string | null
+    prospectionStatusId?: IntNullableFilter<"User"> | number | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    phone?: StringNullableFilter<"User"> | string | null
     Message?: MessageListRelationFilter
   }
 
@@ -3166,9 +4180,10 @@ export namespace Prisma {
     lastname?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    prospectionStatusId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    phone?: SortOrderInput | SortOrder
     Message?: MessageOrderByRelationAggregateInput
   }
 
@@ -3182,9 +4197,10 @@ export namespace Prisma {
     lastname?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
     avatar?: StringNullableFilter<"User"> | string | null
+    phone?: StringNullableFilter<"User"> | string | null
+    prospectionStatusId?: IntNullableFilter<"User"> | number | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    phone?: StringNullableFilter<"User"> | string | null
     Message?: MessageListRelationFilter
   }, "id" | "email">
 
@@ -3195,9 +4211,10 @@ export namespace Prisma {
     lastname?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    prospectionStatusId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    phone?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -3215,9 +4232,59 @@ export namespace Prisma {
     lastname?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
+    prospectionStatusId?: IntNullableWithAggregatesFilter<"User"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
+  }
+
+  export type ProspectionStatusWhereInput = {
+    AND?: ProspectionStatusWhereInput | ProspectionStatusWhereInput[]
+    OR?: ProspectionStatusWhereInput[]
+    NOT?: ProspectionStatusWhereInput | ProspectionStatusWhereInput[]
+    id?: IntFilter<"ProspectionStatus"> | number
+    name?: StringFilter<"ProspectionStatus"> | string
+    createdAt?: DateTimeFilter<"ProspectionStatus"> | Date | string
+    updatedAt?: DateTimeFilter<"ProspectionStatus"> | Date | string
+  }
+
+  export type ProspectionStatusOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProspectionStatusWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ProspectionStatusWhereInput | ProspectionStatusWhereInput[]
+    OR?: ProspectionStatusWhereInput[]
+    NOT?: ProspectionStatusWhereInput | ProspectionStatusWhereInput[]
+    name?: StringFilter<"ProspectionStatus"> | string
+    createdAt?: DateTimeFilter<"ProspectionStatus"> | Date | string
+    updatedAt?: DateTimeFilter<"ProspectionStatus"> | Date | string
+  }, "id">
+
+  export type ProspectionStatusOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ProspectionStatusCountOrderByAggregateInput
+    _avg?: ProspectionStatusAvgOrderByAggregateInput
+    _max?: ProspectionStatusMaxOrderByAggregateInput
+    _min?: ProspectionStatusMinOrderByAggregateInput
+    _sum?: ProspectionStatusSumOrderByAggregateInput
+  }
+
+  export type ProspectionStatusScalarWhereWithAggregatesInput = {
+    AND?: ProspectionStatusScalarWhereWithAggregatesInput | ProspectionStatusScalarWhereWithAggregatesInput[]
+    OR?: ProspectionStatusScalarWhereWithAggregatesInput[]
+    NOT?: ProspectionStatusScalarWhereWithAggregatesInput | ProspectionStatusScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ProspectionStatus"> | number
+    name?: StringWithAggregatesFilter<"ProspectionStatus"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProspectionStatus"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ProspectionStatus"> | Date | string
   }
 
   export type MessageCreateInput = {
@@ -3278,9 +4345,10 @@ export namespace Prisma {
     lastname?: string | null
     password?: string | null
     avatar?: string | null
+    phone?: string | null
+    prospectionStatusId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    phone?: string | null
     Message?: MessageCreateNestedManyWithoutUserInput
   }
 
@@ -3291,9 +4359,10 @@ export namespace Prisma {
     lastname?: string | null
     password?: string | null
     avatar?: string | null
+    phone?: string | null
+    prospectionStatusId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    phone?: string | null
     Message?: MessageUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -3303,9 +4372,10 @@ export namespace Prisma {
     lastname?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     Message?: MessageUpdateManyWithoutUserNestedInput
   }
 
@@ -3316,9 +4386,10 @@ export namespace Prisma {
     lastname?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     Message?: MessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -3329,9 +4400,10 @@ export namespace Prisma {
     lastname?: string | null
     password?: string | null
     avatar?: string | null
+    phone?: string | null
+    prospectionStatusId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    phone?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -3340,9 +4412,10 @@ export namespace Prisma {
     lastname?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -3352,9 +4425,56 @@ export namespace Prisma {
     lastname?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ProspectionStatusCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProspectionStatusUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProspectionStatusUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProspectionStatusUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProspectionStatusCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProspectionStatusUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProspectionStatusUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -3496,6 +4616,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type MessageListRelationFilter = {
     every?: MessageWhereInput
     some?: MessageWhereInput
@@ -3518,13 +4649,15 @@ export namespace Prisma {
     lastname?: SortOrder
     password?: SortOrder
     avatar?: SortOrder
+    phone?: SortOrder
+    prospectionStatusId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    phone?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
     id?: SortOrder
+    prospectionStatusId?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -3534,9 +4667,10 @@ export namespace Prisma {
     lastname?: SortOrder
     password?: SortOrder
     avatar?: SortOrder
+    phone?: SortOrder
+    prospectionStatusId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    phone?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -3546,13 +4680,15 @@ export namespace Prisma {
     lastname?: SortOrder
     password?: SortOrder
     avatar?: SortOrder
+    phone?: SortOrder
+    prospectionStatusId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    phone?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
     id?: SortOrder
+    prospectionStatusId?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -3571,6 +4707,51 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type ProspectionStatusCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProspectionStatusAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ProspectionStatusMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProspectionStatusMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProspectionStatusSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type UserCreateNestedOneWithoutMessageInput = {
@@ -3619,6 +4800,14 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type MessageUpdateManyWithoutUserNestedInput = {
@@ -3757,6 +4946,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -3774,7 +4974,7 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -3782,7 +4982,23 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type UserCreateWithoutMessageInput = {
@@ -3791,9 +5007,10 @@ export namespace Prisma {
     lastname?: string | null
     password?: string | null
     avatar?: string | null
+    phone?: string | null
+    prospectionStatusId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    phone?: string | null
   }
 
   export type UserUncheckedCreateWithoutMessageInput = {
@@ -3803,9 +5020,10 @@ export namespace Prisma {
     lastname?: string | null
     password?: string | null
     avatar?: string | null
+    phone?: string | null
+    prospectionStatusId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    phone?: string | null
   }
 
   export type UserCreateOrConnectWithoutMessageInput = {
@@ -3830,9 +5048,10 @@ export namespace Prisma {
     lastname?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateWithoutMessageInput = {
@@ -3842,9 +5061,10 @@ export namespace Prisma {
     lastname?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MessageCreateWithoutUserInput = {
@@ -3941,6 +5161,10 @@ export namespace Prisma {
      * @deprecated Use UserDefaultArgs instead
      */
     export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ProspectionStatusDefaultArgs instead
+     */
+    export type ProspectionStatusArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProspectionStatusDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

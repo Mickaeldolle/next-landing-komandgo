@@ -1,4 +1,4 @@
-import { PrismaClient as PrismaClient2 } from "@/prisma/generated/client2";
+import { PrismaClient as PrismaClient2 } from "@/prisma/prospect/generated/client2";
 const prisma2 = new PrismaClient2();
 import DataTable from "../../../components/data-table";
 import { columns } from "./columns-prospect";

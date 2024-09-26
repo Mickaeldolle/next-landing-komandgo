@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -70,13 +71,6 @@ model food {
   step_has_food                           step_has_food[]
 
   @@index([category_id], map: "fki_meal_categoryId_fkey")
-}
-
-model message {
-  id      Int    @id @default(autoincrement())
-  content String @db.VarChar(500)
-  user_id Int
-  user    user   @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "message_userId_fkey")
 }
 
 model order {
@@ -166,20 +160,21 @@ model restaurant {
 }
 
 model step {
-  id            Int             @id @default(autoincrement())
-  process_id    Int
-  position      Int
-  min           Int?
-  max           Int?
-  depend_size   Boolean         @default(false)
-  all_selected  Boolean         @default(false)
-  label         String          @db.VarChar(50)
-  ref_step_id   Int?
-  order_food    order_food[]
-  process       process         @relation(fields: [process_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "step_processId_fkey")
-  step          step?           @relation("stepTostep", fields: [ref_step_id], references: [id], onUpdate: NoAction, map: "step_ref_stepId_fkey")
-  other_step    step[]          @relation("stepTostep")
-  step_has_food step_has_food[]
+  id              Int             @id @default(autoincrement())
+  process_id      Int
+  position        Int
+  min             Int?
+  max             Int?
+  depend_size     Boolean         @default(false)
+  all_selected    Boolean         @default(false)
+  label           String          @db.VarChar(50)
+  overwrite_price Int?
+  ref_step_id     Int?
+  order_food      order_food[]
+  process         process         @relation(fields: [process_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "step_processId_fkey")
+  step            step?           @relation("stepTostep", fields: [ref_step_id], references: [id], onUpdate: NoAction, map: "step_ref_stepId_fkey")
+  other_step      step[]          @relation("stepTostep")
+  step_has_food   step_has_food[]
 }
 
 model step_has_food {
@@ -234,7 +229,6 @@ model user {
   updated_at        DateTime?           @updatedAt @db.Timestamptz(6)
   owner             Boolean             @default(false)
   address           address[]
-  message           message[]
   order             order[]
   restaurant        restaurant[]
   subscription      subscription[]

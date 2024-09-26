@@ -134,9 +134,17 @@ exports.Prisma.UserScalarFieldEnum = {
   lastname: 'lastname',
   password: 'password',
   avatar: 'avatar',
+  phone: 'phone',
+  prospectionStatusId: 'prospectionStatusId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  phone: 'phone'
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProspectionStatusScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -157,7 +165,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   Message: 'Message',
-  User: 'User'
+  User: 'User',
+  ProspectionStatus: 'ProspectionStatus'
 };
 
 /**
