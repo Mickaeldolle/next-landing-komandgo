@@ -67,16 +67,20 @@ function LinkButton({ link }: LinkButtonProps) {
   }, [pathName]);
 
   return (
-    <li>
-      <Link
-        href={link.href}
-        className={`${
-          currentLinkActive ? "shadow-[0px_0px_20px_gray]" : ""
-        } flex items-center p-2 rounded-xl`}
-      >
+    <li
+      className={`hover:bg-gray-200 p-3 py-2 lg:px-8 rounded-lg ${
+        currentLinkActive ? "shadow-[0px_0px_20px_gray]" : ""
+      }`}
+    >
+      {/* <Link href={link.href} className={buttonVariants({ variant: "ghost" })}>
+        Click here
+      </Link> */}
+      {/* <Button asChild variant={"default"}> */}
+      <Link href={link.href} className="flex">
         {link.icon}
         <div className="hidden md:block">{link.label}</div>
       </Link>
+      {/* </Button> */}
     </li>
   );
 }

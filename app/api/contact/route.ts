@@ -15,11 +15,12 @@ async function sendContactMessage(req: NextRequest) {
 
     const user = await prisma2.user.upsert({ 
       where: {email: body.email},
-      create : { email, phone},
+      create : { email, phone },
       update: { phone}
     })
 
-  await prisma2.message.create({ data: { content: body.content, userId: user.id}})
+  const message =await prisma2.message.create({ data: { content: body.content, userId: user.id}})
+  console.log(message)
 
   } catch (error) {
     console.error('Erreur lors du parsing du body', error);

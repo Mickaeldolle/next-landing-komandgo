@@ -20,12 +20,12 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col min-h-screen max-w-screen overflow-hidden relative">
-      <div className="h-20 w-full mb-2">
+    <div className="flex flex-col h-screen w-screen relative">
+      <div className="w-full mb-24 bg-white z-50">
         <AdminNavBar />
       </div>
       <main
-        className={`${roboto.className} flex-grow bg-gray-100 border rounded-t-[20px] md:rounded-t-[40px] shadow-inner p-5`}
+        className={`${roboto.className} flex-grow border-t rounded-t-[20px] md:rounded-t-[40px] shadow-inner h-full`}
       >
         {children}
       </main>

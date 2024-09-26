@@ -18,13 +18,22 @@ model Message {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
-  name      String?
-  password  String?
-  avatar    String?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  phone     String?
-  Message   Message[]
+  id                  Int       @id @default(autoincrement())
+  email               String    @unique
+  firstname           String?
+  lastname            String?
+  password            String?
+  avatar              String?
+  phone               String?
+  prospectionStatusId Int?      @default(1)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  Message             Message[]
+}
+
+model ProspectionStatus {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
