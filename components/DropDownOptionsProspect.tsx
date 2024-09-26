@@ -32,7 +32,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
-import { User } from "@/prisma/generated/client2";
+import { User } from "@/prisma/prospect/generated/client2";
 
 interface DropDownMenuActionUserProps {
   row: Row<User>;

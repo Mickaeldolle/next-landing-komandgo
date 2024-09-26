@@ -16,7 +16,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { XCircle } from "lucide-react"; // For showing valid/invalid icons
 import Spinner from "./ui/Spinner";
-import { User } from "@/prisma/generated/client2";
+import { User } from "@/prisma/prospect/generated/client2";
 
 // Password security requirements
 const requirements = {
