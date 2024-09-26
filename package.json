@@ -3,9 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development next dev",
+    "dev": "./scripts/start-dev.sh",
+    "dev-next": "next dev",
+    "migratedbapp:dev": "./scripts/migrate-app-dev.sh",
+    "migratedbprospect:dev": "./scripts/migrate-app-dev.sh",
+    "migrate:dev": "npm run migratedbapp:dev && npm run migratedbprospect:dev",
+    "migratedbapp:prod": "./scripts/migrate-app-prod.sh",
+    "migratedbprospect:prod": "./scripts/migrate-prospect-prod.sh",
+    "migrate:prod": "npm run migratedbapp:prod && npm run migratedbprospect:prod",
     "build": "next build",
-    "start": "NODE_ENV=production next start -p 4000",
+    "start": "./scripts/start-prod.sh",
+    "prod-next": "next start -p 4000",
     "lint": "next lint"
   },
   "dependencies": {
