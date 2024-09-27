@@ -34,20 +34,12 @@ import { SlidersHorizontal } from "lucide-react";
 import AddProspectBtn from "@/app/admin/prospect/add-prospect-btn";
 import { useScreenStore } from "@/store/screenWidth.store";
 
-interface DataWithDetails {
-  id: number;
-  email: string;
-  firstname: string;
-  lastname: string;
-  Company: Company;
-}
-
 interface DataTableProps<User, TValue> {
   columns: ColumnDef<User, TValue>[];
   data: User[];
 }
 
-export default function DataTable<TData extends DataWithDetails, TValue>({
+export default function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -104,7 +96,6 @@ export default function DataTable<TData extends DataWithDetails, TValue>({
 }
 
 import { Table as ReactTable } from "@tanstack/react-table";
-import { Company } from "@/prisma/prospect/generated/client2";
 import Link from "next/link";
 
 interface ButtonViewProps<TData> {
@@ -202,29 +193,24 @@ interface DataTableMobileProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
 }
 
-function DataTableMobile<TData extends DataWithDetails, TValue>({
+function DataTableMobile<TData, TValue>({
   table,
 }: DataTableMobileProps<TData, TValue>) {
-  const filteredData = table.getRowModel().rows.map((row) => row.original);
   return (
-    <ul className="flex flex-col gap-y-2 w-full">
-      {filteredData.length > 0 ? (
-        filteredData.map((list) => (
-          <Link
-            href={`/admin/user/${list.id}`}
-            className="flex flex-col border rounded-md p-4 hover:bg-gray-200"
-            key={list.email}
-          >
-            <span>{list.email}</span>
-            <span>{list.Company?.name}</span>
-            <span>
-              {list.lastname} {list.firstname}
-            </span>
-          </Link>
-        ))
-      ) : (
-        <li className="text-center">No results.</li>
-      )}
-    </ul>
+    <div className="">
+      <ul className="flex flex-col gap-y-2 w-full">
+        {table.getRowModel().rows.map((row) => (
+          <li key={row.id}>
+            <Link href="#" className="border bg-red-500">
+              {row.getVisibleCells().map((cell) => (
+                <div key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </div>
+              ))}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

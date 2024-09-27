@@ -6,12 +6,9 @@ import { ColumnDef } from "@tanstack/react-table";
 import React from "react";
 import { DataTableColumnHeader } from "@/components/data-table-colomn-header";
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-
 // Définir un type qui inclut la relation restaurant
 type MessageAssociateUser = Message & {
-  User: User; // Une relation avec plusieurs restaurants
+  User: User;
 };
 
 export const columns: ColumnDef<MessageAssociateUser>[] = [

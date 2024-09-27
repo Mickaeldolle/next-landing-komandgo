@@ -8,7 +8,7 @@ export default async function Contact() {
     include: { User: true },
     orderBy: { createdAt: "desc" },
   });
-  console.log("messages", messages);
+
   return (
     <div className="h-full">
       <DataTable columns={columns} data={messages} />

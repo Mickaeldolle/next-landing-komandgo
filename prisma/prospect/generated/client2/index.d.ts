@@ -242,6 +242,8 @@ export namespace Prisma {
   export import raw = runtime.raw
   export import Sql = runtime.Sql
 
+
+
   /**
    * Decimal.js
    */
@@ -268,8 +270,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.19.1
-   * Query Engine version: 69d742ee20b815d88e17e54db4a2a7a3b30324e3
+   * Prisma Client JS version: 5.20.0
+   * Query Engine version: 06fc58a368dc7be9fbbbe894adf8d445d208c284
    */
   export type PrismaVersion = {
     client: string
@@ -2404,7 +2406,7 @@ export namespace Prisma {
     avatar: string | null
     phone: string | null
     prospectionStatusId: number | null
-    companyId: number
+    companyId: number | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -2440,7 +2442,7 @@ export namespace Prisma {
     companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    Company?: boolean | CompanyDefaultArgs<ExtArgs>
+    Company?: boolean | User$CompanyArgs<ExtArgs>
     Message?: boolean | User$MessageArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -2457,7 +2459,7 @@ export namespace Prisma {
     companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    Company?: boolean | CompanyDefaultArgs<ExtArgs>
+    Company?: boolean | User$CompanyArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2475,18 +2477,18 @@ export namespace Prisma {
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Company?: boolean | CompanyDefaultArgs<ExtArgs>
+    Company?: boolean | User$CompanyArgs<ExtArgs>
     Message?: boolean | User$MessageArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Company?: boolean | CompanyDefaultArgs<ExtArgs>
+    Company?: boolean | User$CompanyArgs<ExtArgs>
   }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      Company: Prisma.$CompanyPayload<ExtArgs>
+      Company: Prisma.$CompanyPayload<ExtArgs> | null
       Message: Prisma.$MessagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2498,7 +2500,7 @@ export namespace Prisma {
       avatar: string | null
       phone: string | null
       prospectionStatusId: number | null
-      companyId: number
+      companyId: number | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -2865,7 +2867,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    Company<T extends User$CompanyArgs<ExtArgs> = {}>(args?: Subset<T, User$CompanyArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     Message<T extends User$MessageArgs<ExtArgs> = {}>(args?: Subset<T, User$MessageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3222,6 +3224,21 @@ export namespace Prisma {
      * Filter which Users to delete
      */
     where?: UserWhereInput
+  }
+
+  /**
+   * User.Company
+   */
+  export type User$CompanyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    where?: CompanyWhereInput
   }
 
   /**
@@ -6442,10 +6459,10 @@ export namespace Prisma {
     avatar?: StringNullableFilter<"User"> | string | null
     phone?: StringNullableFilter<"User"> | string | null
     prospectionStatusId?: IntNullableFilter<"User"> | number | null
-    companyId?: IntFilter<"User"> | number
+    companyId?: IntNullableFilter<"User"> | number | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    Company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    Company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
     Message?: MessageListRelationFilter
   }
 
@@ -6458,7 +6475,7 @@ export namespace Prisma {
     avatar?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
     prospectionStatusId?: SortOrderInput | SortOrder
-    companyId?: SortOrder
+    companyId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     Company?: CompanyOrderByWithRelationInput
@@ -6480,7 +6497,7 @@ export namespace Prisma {
     prospectionStatusId?: IntNullableFilter<"User"> | number | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    Company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    Company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
     Message?: MessageListRelationFilter
   }, "id" | "email" | "companyId">
 
@@ -6493,7 +6510,7 @@ export namespace Prisma {
     avatar?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
     prospectionStatusId?: SortOrderInput | SortOrder
-    companyId?: SortOrder
+    companyId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -6515,7 +6532,7 @@ export namespace Prisma {
     avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
     phone?: StringNullableWithAggregatesFilter<"User"> | string | null
     prospectionStatusId?: IntNullableWithAggregatesFilter<"User"> | number | null
-    companyId?: IntWithAggregatesFilter<"User"> | number
+    companyId?: IntNullableWithAggregatesFilter<"User"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -6773,7 +6790,7 @@ export namespace Prisma {
     prospectionStatusId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    Company: CompanyCreateNestedOneWithoutUserInput
+    Company?: CompanyCreateNestedOneWithoutUserInput
     Message?: MessageCreateNestedManyWithoutUserInput
   }
 
@@ -6786,7 +6803,7 @@ export namespace Prisma {
     avatar?: string | null
     phone?: string | null
     prospectionStatusId?: number | null
-    companyId: number
+    companyId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Message?: MessageUncheckedCreateNestedManyWithoutUserInput
@@ -6802,7 +6819,7 @@ export namespace Prisma {
     prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Company?: CompanyUpdateOneRequiredWithoutUserNestedInput
+    Company?: CompanyUpdateOneWithoutUserNestedInput
     Message?: MessageUpdateManyWithoutUserNestedInput
   }
 
@@ -6815,7 +6832,7 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
-    companyId?: IntFieldUpdateOperationsInput | number
+    companyId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Message?: MessageUncheckedUpdateManyWithoutUserNestedInput
@@ -6830,7 +6847,7 @@ export namespace Prisma {
     avatar?: string | null
     phone?: string | null
     prospectionStatusId?: number | null
-    companyId: number
+    companyId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6856,7 +6873,7 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
-    companyId?: IntFieldUpdateOperationsInput | number
+    companyId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7205,9 +7222,9 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type CompanyRelationFilter = {
-    is?: CompanyWhereInput
-    isNot?: CompanyWhereInput
+  export type CompanyNullableRelationFilter = {
+    is?: CompanyWhereInput | null
+    isNot?: CompanyWhereInput | null
   }
 
   export type MessageListRelationFilter = {
@@ -7392,6 +7409,11 @@ export namespace Prisma {
     not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
+  export type CompanyRelationFilter = {
+    is?: CompanyWhereInput
+    isNot?: CompanyWhereInput
+  }
+
   export type AddressCountOrderByAggregateInput = {
     id?: SortOrder
     label?: SortOrder
@@ -7526,10 +7548,12 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type CompanyUpdateOneRequiredWithoutUserNestedInput = {
+  export type CompanyUpdateOneWithoutUserNestedInput = {
     create?: XOR<CompanyCreateWithoutUserInput, CompanyUncheckedCreateWithoutUserInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutUserInput
     upsert?: CompanyUpsertWithoutUserInput
+    disconnect?: CompanyWhereInput | boolean
+    delete?: CompanyWhereInput | boolean
     connect?: CompanyWhereUniqueInput
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutUserInput, CompanyUpdateWithoutUserInput>, CompanyUncheckedUpdateWithoutUserInput>
   }
@@ -7848,7 +7872,7 @@ export namespace Prisma {
     prospectionStatusId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    Company: CompanyCreateNestedOneWithoutUserInput
+    Company?: CompanyCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMessageInput = {
@@ -7860,7 +7884,7 @@ export namespace Prisma {
     avatar?: string | null
     phone?: string | null
     prospectionStatusId?: number | null
-    companyId: number
+    companyId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7891,7 +7915,7 @@ export namespace Prisma {
     prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Company?: CompanyUpdateOneRequiredWithoutUserNestedInput
+    Company?: CompanyUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMessageInput = {
@@ -7903,7 +7927,7 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     prospectionStatusId?: NullableIntFieldUpdateOperationsInput | number | null
-    companyId?: IntFieldUpdateOperationsInput | number
+    companyId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
