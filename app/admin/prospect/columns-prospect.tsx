@@ -40,6 +40,10 @@ export const columns: ColumnDef<User>[] = [
     ),
   },
   {
+    accessorKey: "Company.name",
+    header: () => <div className="text-gray-400 font-normal">Entreprise</div>,
+  },
+  {
     accessorKey: "lastname",
     header: () => <div className="text-gray-400 font-normal">Nom</div>,
   },

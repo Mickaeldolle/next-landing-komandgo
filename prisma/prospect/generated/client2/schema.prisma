@@ -27,6 +27,8 @@ model User {
   avatar              String?
   phone               String?
   prospectionStatusId Int?      @default(1)
+  companyId           Int       @unique
+  Company             Company   @relation(fields: [companyId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
   Message             Message[]
@@ -39,9 +41,26 @@ model ProspectionStatus {
   updatedAt DateTime @updatedAt
 }
 
-model Test {
+model Company {
   id        Int      @id @default(autoincrement())
   name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Address   Address?
+  User      User?
+}
+
+model Address {
+  id        Int      @id @default(autoincrement())
+  label     String   @db.VarChar(250)
+  street    String   @db.VarChar(250)
+  city      String   @db.VarChar(250)
+  zip       String   @db.VarChar(250)
+  country   String   @db.VarChar(250)
+  lat       Decimal? @db.Decimal
+  long      Decimal? @db.Decimal
+  companyId Int      @unique
+  Company   Company  @relation(fields: [companyId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

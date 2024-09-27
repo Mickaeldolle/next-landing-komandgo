@@ -136,6 +136,7 @@ exports.Prisma.UserScalarFieldEnum = {
   avatar: 'avatar',
   phone: 'phone',
   prospectionStatusId: 'prospectionStatusId',
+  companyId: 'companyId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -147,9 +148,23 @@ exports.Prisma.ProspectionStatusScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.TestScalarFieldEnum = {
+exports.Prisma.CompanyScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  street: 'street',
+  city: 'city',
+  zip: 'zip',
+  country: 'country',
+  lat: 'lat',
+  long: 'long',
+  companyId: 'companyId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -174,7 +189,8 @@ exports.Prisma.ModelName = {
   Message: 'Message',
   User: 'User',
   ProspectionStatus: 'ProspectionStatus',
-  Test: 'Test'
+  Company: 'Company',
+  Address: 'Address'
 };
 
 /**

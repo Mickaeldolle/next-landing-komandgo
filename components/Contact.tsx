@@ -86,7 +86,6 @@ export default function Contact({
               </Label>
               <Textarea
                 required
-                rows={10}
                 id="content"
                 className="mb-2 text-gray-200"
                 name="content"
